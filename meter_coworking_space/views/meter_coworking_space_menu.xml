@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem
+        id="mtr_coworking_space_menu_root"
+        name="Coworking Space"
+        web_icon="meter_coworking_space,static/description/icon.png"
+        groups="sales_team.group_sale_salesman"
+        sequence="6">
+
+        <menuitem
+            id="mtr_coworking_space_floor_menu"
+            name="Floors" action="floor_action"
+            sequence="20"
+        />
+        <menuitem id="mtr_order_menu"
+            name="Bookings"
+            sequence="2">
+
+            <menuitem id="mtr_orders_all"
+                name="Orders"
+                action="mtr_order_action"
+                sequence="1"/>
+
+            <menuitem id="mtr_menu_orders_customers"
+                name="Customers"
+                action="account.res_partner_action_customer"
+                sequence="2"/>
+
+<!--            <menuitem id="rental_orders_today"-->
+<!--                name="To Do Today"-->
+<!--                sequence="3">-->
+
+<!--                <menuitem id="rental_orders_pickup"-->
+<!--                    name="Pickup"-->
+<!--                    action="rental_order_today_pickup_action"-->
+<!--                    sequence="1"/>-->
+
+<!--                <menuitem id="rental_orders_return"-->
+<!--                    name="Return"-->
+<!--                    action="rental_order_today_return_action"-->
+<!--                    sequence="2"/>-->
+
+<!--            </menuitem>-->
+        </menuitem>
+
+        <menuitem id="mtr_menu_spaces"
+            name="Spaces"
+            action="coworking_space_template_action"
+            sequence="4"/>
+    </menuitem>
+
+<!--    <menuitem-->
+<!--            id="mtr_coworking_space_menu_root"-->
+<!--            name="MTR CoWorking Space"-->
+<!--            action="sale_renting.building_action_main"-->
+<!--    />-->
+<!--    <menuitem-->
+<!--            id="mtr_coworking_space_floor_menu"-->
+<!--            name="Floors" action="floor_action"-->
+<!--            parent="mtr_coworking_space_menu_root"-->
+<!--            sequence="20"-->
+<!--    />-->
+<!--    <menuitem id="mtr_coworking_space_office_menu"-->
+<!--              name="Offices"-->
+<!--              action="office_action"-->
+<!--              parent="mtr_coworking_space_menu_root"-->
+<!--              sequence="21"-->
+<!--    />-->
+<!--&lt;!&ndash;    <menuitem id="mtr_coworking_space_office2_menu" name="Offices2" action="website_sale.product_template_action_website" parent="mtr_coworking_space_menu_root"/>&ndash;&gt;-->
+<!--    <menuitem-->
+<!--            id="mtr_coworking_space_spaces_menu"-->
+<!--            name="Spaces"-->
+<!--            action="action_view_product_template_coworking"-->
+<!--            parent="mtr_coworking_space_menu_root"-->
+<!--            sequence="21"-->
+<!--    />-->
+<!--    <menuitem id="mtr_coworking_space_booking_menu"-->
+<!--              name="Bookings"-->
+<!--              action="booking_action"-->
+<!--              parent="mtr_coworking_space_menu_root"-->
+<!--              sequence="22"-->
+<!--    />-->
+<!--    <menuitem-->
+<!--        id="mtr_coworking_space_menu_config"-->
+<!--        name="Configuration"-->
+<!--        parent="mtr_coworking_space_menu_root"-->
+<!--        sequence="25"/>-->
+
+<!--    <menuitem id="mtr_coworking_space_office_services_menu"-->
+<!--              name="Services" action="office_services_action"-->
+<!--              parent="mtr_coworking_space_menu_config"-->
+<!--              sequence="10"-->
+<!--    />-->
+<!--    <menuitem id="mtr_coworking_space_pricing_menu"-->
+<!--              name="Space Pricing"-->
+<!--              action="space_pricing_action"-->
+<!--              parent="mtr_coworking_space_menu_config"-->
+<!--              sequence="11"-->
+<!--    />-->
+<!--    <menuitem id="mtr_coworking_space_tags_menu"-->
+<!--              name="Tags"-->
+<!--              action="tags_action"-->
+<!--              parent="mtr_coworking_space_menu_config"-->
+<!--              sequence="12"-->
+<!--    />-->
+
+
+<!-- groups="sales_team.group_sale_manager" action="crm.action_your_pipeline"  -->
+</odoo>

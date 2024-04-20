@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- inherit rental order view search -->
+    <record id="coworking_space_order_view_search" model="ir.ui.view">
+        <field name="name">coworking.space.order.search</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_renting.rental_order_view_search"/>
+        <field name="mode">primary</field>
+        <field name="priority">999</field>
+        <field name="arch" type="xml">
+            <filter name="from_rental" position="before">
+                <filter string="CW Spaces" name="from_cw_space" domain="[('is_space_order', '=', True)]"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

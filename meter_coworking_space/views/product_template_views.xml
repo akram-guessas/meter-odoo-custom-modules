@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- inherit product_template form view -->
+    <record id="coworking_space_product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.coworking.space</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']" position='inside'>
+                <span class="d-inline-block">
+                    <field name="space_ok"/>
+                    <label for="space_ok"/>
+                </span>
+            </xpath>
+<!--            <xpath expr="//notebook/page[@name='sales']" position="attributes">-->
+<!--                <attribute name="invisible" add="not rent_ok" separator=" and "/>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+
+    <!-- inherit product_template search view -->
+    <record id="coworking_space_product_template_search_view" model="ir.ui.view">
+        <field name="name">product.template.search.inherit.coworking.space</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sale_renting.rental_product_template_search_view"/>
+        <field name="arch" type="xml">
+            <filter name="filter_to_rent" position="after">
+                <filter string="Is Coworking Space" name="filter_is_space" domain="[('space_ok', '=', True)]"/>
+            </filter>
+        </field>
+    </record>
+</odoo>
