@@ -12,6 +12,9 @@
         # "report/full_report_template.xml",
         # "report/smart_office_templates.xml",
 
+        "data/product_categories.xml",
+        "data/meter_space_page.xml",
+
         "views/meter_all_actions.xml",
         "views/meter_floor_menus.xml",
         "views/meter_floor_views.xml",

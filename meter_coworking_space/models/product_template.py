@@ -11,3 +11,10 @@ class ProductProduct(models.Model):
         help="Coworking space product.")
 
     floor_id = fields.Many2one(comodel_name='mtr_coworking.floor', string='Floor')
+
+    @api.onchange('space_ok')
+    def _onchange_is_coworking_space(self):
+        for space in self:
+            if space.space_ok == True:
+                category = self.env.ref('meter_coworking_space.coworking_category')
+                space.public_categ_ids = [(6, 0, [category.id])]

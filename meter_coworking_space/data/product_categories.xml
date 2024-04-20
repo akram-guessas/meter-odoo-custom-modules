@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Define Coworking Space category -->
+        <record id="coworking_category" model="product.public.category">
+            <field name="name">Coworking Space</field>
+            <field name="website_id" eval="ref('website.default_website')"/>
+        </record>
+    </data>
+</odoo>
