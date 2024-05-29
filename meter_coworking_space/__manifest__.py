@@ -10,12 +10,12 @@
         "data/product_categories.xml",
         "data/meter_space_page.xml",
 
+        "views/sale_order_views.xml",
         "views/meter_all_actions.xml",
         "views/meter_floor_menus.xml",
         "views/meter_floor_views.xml",
         "views/meter_coworking_space_menu.xml",
         "views/product_template_views.xml",
-        "views/sale_order_views.xml",
 
     ],
     "installable": True,
