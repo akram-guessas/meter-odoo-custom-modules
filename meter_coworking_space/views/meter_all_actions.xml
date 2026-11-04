@@ -1,47 +1,39 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--  order Action  -->
-    <record id="mtr_order_action" model="ir.actions.act_window">
-        <field name="name">Space Orders</field>
-        <field name="res_model">sale.order</field>
-        <field name="view_mode">kanban,tree,form,calendar,pivot,graph,activity</field>
-        <field name="search_view_id" ref="coworking_space_order_view_search"/>
-        <field name="context">{
-            'in_rental_app': 1,
-            'in_meter_coworking_space_app': 1,
-
-            'search_default_from_cw_space': 1,
-            }</field>
+    <record id="floor_action" model="ir.actions.act_window">
+        <field name="name">Floors</field>
+        <field name="res_model">mtr_coworking.floor</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Create a new quotation, the first step of a new rental!
-            </p>
-            <p>
-                Once the quotation is confirmed, it becomes a rental order.<br/> You will be able to create an invoice and collect the payment.
-            </p>
+            <p class="o_view_nocontent_smiling_face">Create your first floor.</p>
         </field>
     </record>
-    <!--  space Action  -->
+
+    <record id="mtr_order_action" model="ir.actions.act_window">
+        <field name="name">Bookings</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,kanban,form,pivot,graph</field>
+        <field name="search_view_id" ref="coworking_space_order_view_search"/>
+        <field name="context">{'search_default_from_cw_space': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a quotation to book a space.</p>
+            <p>Add a coworking space, set the booking start and end, then confirm the order.</p>
+        </field>
+    </record>
+
     <record id="coworking_space_template_action" model="ir.actions.act_window">
         <field name="name">Spaces</field>
         <field name="res_model">product.template</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">kanban,list,form</field>
         <field name="context">{
-            'default_sale_ok': False,
-            'default_rent_ok': True,
             'default_space_ok': True,
-            'default_detailed_type': 'consu',
+            'default_type': 'service',
+            'default_sale_ok': True,
             'default_purchase_ok': False,
-            'search_default_filter_is_space': True,
-        }
-        </field>
+            'search_default_filter_is_space': 1,
+        }</field>
         <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Create a new coworking space!
-            </p>
-            <p>
-                You can also create additional products or services to sell by checking *Can be Sold* in the product form (e.g. insurance).
-            </p>
+            <p class="o_view_nocontent_smiling_face">Create your first coworking space.</p>
         </field>
     </record>
 </odoo>

@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <!-- Floor Form View -->
-        <record id="view_floor_form" model="ir.ui.view">
-            <field name="name">mtr_coworking.floor.form</field>
-            <field name="model">mtr_coworking.floor</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
+    <record id="view_floor_form" model="ir.ui.view">
+        <field name="name">mtr_coworking.floor.form</field>
+        <field name="model">mtr_coworking.floor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
                         <group>
                             <field name="name"/>
                             <field name="type"/>
-                            <field name="description"/>
                             <field name="floor_capacity"/>
-<!--                            <field name="building_id"/>-->
-                            <field name="num_spaces" readonly="1"/>
                         </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+                        <group>
+                            <field name="num_spaces"/>
+                        </group>
+                    </group>
+                    <field name="description" placeholder="Description"/>
+                    <field name="space_ids">
+                        <list>
+                            <field name="name"/>
+                            <field name="list_price"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-        <!-- Floor List View -->
-        <record id="view_floor_tree" model="ir.ui.view">
-            <field name="name">mtr_coworking.floor.tree</field>
-            <field name="model">mtr_coworking.floor</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                    <field name="type"/>
-                    <field name="floor_capacity"/>
-<!--                    <field name="building_id"/>-->
-                    <field name="num_spaces"/>
-                </tree>
-            </field>
-        </record>
-    </data>
+    <record id="view_floor_list" model="ir.ui.view">
+        <field name="name">mtr_coworking.floor.list</field>
+        <field name="model">mtr_coworking.floor</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="floor_capacity"/>
+                <field name="num_spaces"/>
+            </list>
+        </field>
+    </record>
 </odoo>

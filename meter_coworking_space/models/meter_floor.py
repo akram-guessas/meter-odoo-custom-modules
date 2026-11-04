@@ -1,49 +1,30 @@
-from odoo import models, fields, api
+from odoo import api, fields, models
 
-class MTRFloor(models.Model):
-    _name = 'mtr_coworking.floor'
-    _description = 'Floor Model'
 
-    name = fields.Char(string='Name', required=True)
-    description = fields.Text(string='Description')
-    type = fields.Selection([
-        ('private', 'Private'),
-        ('coworking_space', 'CoWorking Space')
-    ], string='Type', required=True)
-    floor_capacity = fields.Integer(string='Capacity')
-    # building_id = fields.Many2one(
-    #     comodel_name='mtr_coworking.building', string='Building', required=True
-    # )
-    # office_ids = fields.One2many(
-    #     comodel_name='mtr_coworking.office', inverse_name='floor_id', string='Offices'
-    # )
+class CoworkingFloor(models.Model):
+    _name = "mtr_coworking.floor"
+    _description = "Coworking Floor"
+    _order = "name"
 
-    # space_ids = fields.One2many(
-    #     comodel_name='product.template', inverse_name='floor_id', string='Product'
-    # )
-
+    name = fields.Char(required=True)
+    description = fields.Text()
+    type = fields.Selection(
+        [("private", "Private"), ("coworking_space", "Coworking Space")],
+        required=True,
+        default="coworking_space",
+    )
+    floor_capacity = fields.Integer(string="Capacity")
     space_ids = fields.One2many(
-        comodel_name='product.template',
-        inverse_name='floor_id',
-        string='Coworking Spaces',
-        # compute='_compute_space_ids',
-        readonly=True
+        comodel_name="product.template",
+        inverse_name="floor_id",
+        string="Spaces",
+        readonly=True,
     )
-
-    # @api.depends('space_ids.is_coworking_space')
-    # def _compute_space_ids(self):
-    #     for floor in self:
-    #         floor.space_ids = self.env['product.template'].search([
-    #             ('floor_id', '=', floor.id),
-    #             ('is_coworking_space', '=', True)
-    #         ])
-
-
     num_spaces = fields.Integer(
-        string='Number of Spaces', compute='_compute_space_ids', store=True
+        string="Number of Spaces", compute="_compute_num_spaces", store=True
     )
 
-    @api.depends('space_ids')
-    def _compute_space_ids(self):
-        for record in self:
-            record.num_spaces = len(record.space_ids)
+    @api.depends("space_ids")
+    def _compute_num_spaces(self):
+        for floor in self:
+            floor.num_spaces = len(floor.space_ids)
